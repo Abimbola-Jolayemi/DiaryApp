@@ -1,0 +1,29 @@
+# Ignore .idea folder (IDE-specific files for IntelliJ)
+.idea/
+
+# Ignore all .iml files (IDE-specific module files)
+*.iml
+
+# Ignore library files (jars, dependencies)
+lib/
+
+# Ignore build files and output folders (if you have them)
+out/
+build/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore log files
+*.log
+
+# Ignore temporary files created by editors
+*.swp
+*~
+
+# Ignore compiled Java files (if generated in the project folder)
+*.class
+
+# Ignore test reports (if applicable)
+test-output/
