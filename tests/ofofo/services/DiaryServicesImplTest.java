@@ -32,6 +32,13 @@ public class DiaryServicesImplTest {
     }
 
     @Test
+    public void testThatWhenDiaryIsLoggedIn_DiaryIsUnlocked(){
+        Diary diary = diaryServices.register("Abimbola", "0000");
+        diaryServices.login("Abimbola", "0000");
+        assertFalse(diary.isLocked());
+    }
+
+    @Test
     public void testThatADiaryServicesCanLoginAUser_noEntryIsAddedToNewDiary_noOfEntriesForNewDiaryIsZero() {
         Diary diary = diaryServices.register("Abimbola", "0000");
         diaryServices.login("Abimbola", "0000");
@@ -83,13 +90,24 @@ public class DiaryServicesImplTest {
     }
 
     @Test
-    public void testLogOutDiary() {
+    public void testLogOutDiary(){
         Diary diary = diaryServices.register("Abimbola", "password");
         diaryServices.login("Abimbola", "password");
         assertTrue(diary.isLoggedIn());
         diaryServices.logOut("Abimbola");
         Diary updatedDiary = diaryServices.findDiaryById("Abimbola");
         assertFalse(updatedDiary.isLoggedIn());
+    }
+
+    @Test
+    public void testThatDiaryIsLockedWhenLoggedOut(){
+        Diary diary = diaryServices.register("Abimbola", "password");
+        diaryServices.login("Abimbola", "password");
+        assertTrue(diary.isLoggedIn());
+        diaryServices.logOut("Abimbola");
+        Diary updatedDiary = diaryServices.findDiaryById("Abimbola");
+        assertFalse(updatedDiary.isLoggedIn());
+        assertTrue(updatedDiary.isLocked());
     }
 
     @Test

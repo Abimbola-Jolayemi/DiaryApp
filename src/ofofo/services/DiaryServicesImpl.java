@@ -65,6 +65,7 @@ public class DiaryServicesImpl implements DiaryServices {
         if (!diary.isLoggedIn()) {
             throw new IllegalStateException("User is already logged out");
         }
+        diary.setLocked(true);
         diary.setLoggedIn(false);
         diaryRepository.save(diary);
     }
